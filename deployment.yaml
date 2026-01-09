@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: petshop
-        image: sevenajay/petshop:latest
+        image: ryansaad85/petshop:latest
         ports:
         - containerPort: 8080
         imagePullPolicy: Always
@@ -24,7 +24,7 @@ kind: Service
 metadata:
   name: petshop
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: petshop
   ports:
@@ -32,3 +32,4 @@ spec:
     protocol: TCP
     port: 80
     targetPort: 8080
+    nodePort: 30001
