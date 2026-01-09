@@ -6,14 +6,12 @@
 
   tasks:
     - name: Build Docker Image
-      # usage of command module to avoid python dependency issues
       command: docker build -t {{ image_name }} .
       args:
-        # We use the {{ workspace }} variable so it works even if you rename the job
         chdir: "{{ workspace }}"
 
     - name: Log in to Docker Hub
-      # We use shell here to safely pass the password variable
+      # Login securely using the password variable from Jenkins
       shell: "docker login -u {{ docker_user }} -p {{ docker_pass }}"
 
     - name: Push image
