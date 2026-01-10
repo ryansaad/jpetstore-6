@@ -11,5 +11,5 @@
       become: yes
 
     - name: Apply Deployment
-      # ⚠️ UPDATED: Added --kubeconfig so Ansible can find the credentials
-      command: kubectl apply -f /home/ubuntu/deployment.yaml --kubeconfig=/home/ubuntu/.kube/config
+      # ⚠️ FIX: Added --validate=false to prevent timeout/connection errors
+      command: kubectl apply -f /home/ubuntu/deployment.yaml --kubeconfig=/home/ubuntu/.kube/config --validate=false
